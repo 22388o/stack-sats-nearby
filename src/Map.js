@@ -7,6 +7,7 @@ import {
   LayerGroup,
 } from "react-leaflet";
 import "./App.css";
+import atmData from "./data/north-america.json";
 
 export default function Map() {
   return (
@@ -25,6 +26,13 @@ export default function Map() {
           />
         </LayersControl.BaseLayer>
       </LayersControl>
+      {atmData.map((atm) => (
+        <Marker
+          key={atm.properties.address}
+          position={[atm.geometry.coordinates[1], atm.geometry.coordinates[0]]}
+        />
+      ))}
     </MapContainer>
   );
 }
+
