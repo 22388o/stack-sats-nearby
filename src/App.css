@@ -2,3 +2,13 @@
   width: 100vw;
   height: 100vh;
 }
+
+.nav {
+  display: flex;
+  padding: 0px 10px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  color: white;
+}
+
