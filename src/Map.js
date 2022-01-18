@@ -11,7 +11,7 @@ import atmData from "./data/north-america.json";
 
 export default function Map() {
   return (
-    <MapContainer center={[41, -87]} zoom={7} scrollWheelZoom={true}>
+    <MapContainer center={[37, -94]} zoom={5} scrollWheelZoom={true}>
       <LayersControl position="topright">
         <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
           <TileLayer
@@ -35,4 +35,3 @@ export default function Map() {
     </MapContainer>
   );
 }
-
