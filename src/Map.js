@@ -6,10 +6,20 @@ import {
   LayersControl,
   LayerGroup,
 } from "react-leaflet";
+import * as L from "leaflet";
 import "./App.css";
 import atmData from "./data/north-america.json";
 
 export default function Map() {
+  const LeafIcon = L.Icon.extend({
+    options: {},
+  });
+
+  const atmIcon = new LeafIcon({
+    iconUrl: "",
+    iconSize: [26, 26],
+  });
+
   return (
     <MapContainer center={[37, -94]} zoom={5} scrollWheelZoom={true}>
       <LayersControl position="topright">
@@ -28,9 +38,16 @@ export default function Map() {
       </LayersControl>
       {atmData.map((atm) => (
         <Marker
+          //icon={atmIcon}
           key={atm.properties.address}
           position={[atm.geometry.coordinates[1], atm.geometry.coordinates[0]]}
-        />
+        >
+          <Popup>
+            <h2 style={{color: 'orange'}}>{atm.properties.name}</h2>
+            <h3 >{atm.properties.address}</h3>
+            <h4 style={{color: 'grey'}}>{atm.properties.hours}</h4>
+          </Popup>
+        </Marker>
       ))}
     </MapContainer>
   );
