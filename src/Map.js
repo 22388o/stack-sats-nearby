@@ -4,7 +4,6 @@ import {
   Marker,
   Popup,
   LayersControl,
-  LayerGroup,
 } from "react-leaflet";
 import * as L from "leaflet";
 import "./App.css";
@@ -16,7 +15,8 @@ export default function Map() {
   });
 
   const atmIcon = new LeafIcon({
-    iconUrl: "",
+    iconUrl:
+      "https://raw.githubusercontent.com/aarontorres0/stack-sats-nearby/master/src/bitcoinde.svg",
     iconSize: [26, 26],
   });
 
@@ -38,14 +38,14 @@ export default function Map() {
       </LayersControl>
       {atmData.map((atm) => (
         <Marker
-          //icon={atmIcon}
+          icon={atmIcon}
           key={atm.properties.address}
           position={[atm.geometry.coordinates[1], atm.geometry.coordinates[0]]}
         >
           <Popup>
-            <h2 style={{color: 'orange'}}>{atm.properties.name}</h2>
-            <h3 >{atm.properties.address}</h3>
-            <h4 style={{color: 'grey'}}>{atm.properties.hours}</h4>
+            <h2 style={{ color: "orange" }}>{atm.properties.name}</h2>
+            <h3>{atm.properties.address}</h3>
+            <h4 style={{ color: "grey" }}>{atm.properties.hours}</h4>
           </Popup>
         </Marker>
       ))}
