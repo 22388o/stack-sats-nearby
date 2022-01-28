@@ -5,6 +5,7 @@ import {
   Popup,
   LayersControl,
 } from "react-leaflet";
+import { v4 as uuidv4 } from "uuid";
 import * as L from "leaflet";
 import "./App.css";
 import atmData from "./data/north-america.json";
@@ -39,7 +40,7 @@ export default function Map() {
       {atmData.map((atm) => (
         <Marker
           icon={atmIcon}
-          key={atm.properties.address}
+          key={uuidv4()}
           position={[atm.geometry.coordinates[1], atm.geometry.coordinates[0]]}
         >
           <Popup>
